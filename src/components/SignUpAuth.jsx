@@ -75,6 +75,13 @@ const SignUpAuth = ({ authProps }) => {
         console.log("hash function" + inp_password_hash + " x " + con_password_hash);
 
         if (passwordHashMatched) {
+            // try {
+            //     const res = await axios.get("http://localhost:8000/getUsers");
+            //     console.log(res);
+            // } catch (error) {
+            //     console.log(error);
+            // }
+
             const userDataForDB = {
                 email: formData.email,
                 username: formData.username ? formData.username : undefined,
@@ -88,7 +95,7 @@ const SignUpAuth = ({ authProps }) => {
                 if (res.status === 200) {
                     console.log(res.data);
                     localStorage.setItem("userJWTToken", res.data.userJWTToken);
-                    // window.location.href = "http://localhost:3000/admin";
+                    window.location.href = "http://localhost:3000/admin";
                 } else {
                     console.log(res);
                 }
@@ -108,14 +115,25 @@ const SignUpAuth = ({ authProps }) => {
 
 
     const googleGetURL = async () => {
-        const res = await axios.post('http://localhost:8000/auth/google');
-        // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
-        window.location.href = await res.data.generatedUrl;
+        try {
+            const res = await axios.post('http://localhost:8000/auth/google');
+            // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
+            window.location.href = await res.data.generatedUrl;
+        } catch (error) {
+            console.log("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeer" , error);
+        }
+        
     }
     const githubGetURL = async () => {
-        const res = await axios.post('http://localhost:8000/auth/github');
-        // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
-        window.location.href = await res.data.generatedUrl;
+
+        try {
+            const res = await axios.post('http://localhost:8000/auth/github');
+            // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
+            window.location.href = await res.data.generatedUrl;
+        } catch (error) {
+            console.log(error);
+        }
+        
     }
 
     return (
