@@ -84,10 +84,10 @@ const AdminOrganizationContent = () => {
         <div key={item._id} className={`con flex justify-center items-center p-[4px] bg-slate-100 mb-[20px] rounded border-[2px] `}>
           {/* {item.title} - {item.desc} - from {item.start.slice(0, 10)} to {item.end.slice(0, 10)} */}
           <div className="title font-semibold break-words flex justify-start items-center w-1/6 ">{item.title}</div>
-          <div className="desc break-words flex justify-start items-center w-2/6 ">{item.desc}</div>
-          <div className="start w-1/6 ">{item.start.slice(0, 10)}</div>
-          <div className="end w-1/6">{item.end.slice(0, 10)}</div>
-          <div className='assignedto w-1/6'>{item.assignedto}</div>
+          <div className="desc break-words flex justify-start items-center w-2/6">{item.desc}</div>
+          <div className="start w-1/6  ">{item.start.slice(0, 10)}</div>
+          <div className="end w-1/6 ">{item.end.slice(0, 10)}</div>
+          <div className='assignedto w-1/6 whitespace-nowrap overflow-hidden overflow-ellipsis' title={item.assignedto}>{item.assignedto}</div>
           <div className="status w-1/6">{item.status}</div>
           {/* <img src={editLogo} alt="" className='w-[20px] mx-1 cursor-pointer' onClick={taskComplete} /> */}
           {orgData.admin === userData.email ? <img src={delteLogo} alt="" className='w-[20px] mx-1 cursor-pointer' onClick={() => taskDelete(item._id)} /> : ""}
@@ -100,7 +100,7 @@ const AdminOrganizationContent = () => {
     getUserTasks.map((item) => {
       console.log("each task")
       return (
-        <div key={item._id} className={`con flex justify-center items-center p-1 bg-[skyblue] m-5 rounded]`}>
+        <div key={item._id} className={`con flex justify-center items-center p-[4px] bg-slate-100 mb-[20px] rounded border-[2px] `}>
           {/* {item.title} - {item.desc} - from {item.start.slice(0, 10)} to {item.end.slice(0, 10)} */}
           <div className="title font-semibold break-words flex justify-start items-center w-1/6 ">{item.title}</div>
           <div className="desc break-words flex justify-start items-center w-2/6 ">{item.desc}</div>
@@ -122,12 +122,17 @@ const AdminOrganizationContent = () => {
         <div className="org h-[50px] flex justify-center items-center font-semibold font-[sans-serif] ">
           {console.log("xxxxxxxxxxxxxxxxxxxxxxxxxxxx", orgData.image)}
           
-          {orgData.image ? <> <img src={orgData.image} alt="" className='rounded-[50%] h-[35px] w-[35px]' /> <h3>{orgData.name} - {orgData.desc}</h3> </>
+          {orgData.image ? <> <div className='flex justify-center items-center '><img src={orgData.image} alt="" className='rounded-[50%] h-[35px] w-[35px]' /> <p className='font-bold text-[20px]'>{orgData.name} : </p><p className='text-[gray]'>{orgData.desc}</p></div> </>
            : <></>}
           
           {/* <img src={orgData.image} alt="" srcset="" className='rounded-[50%] h-[35px] w-[35px]' />
           <h3>{orgData.name} - {orgData.desc}</h3> */}
         </div>
+        {orgData.admin == userData.email ? <div className="inviteholder">
+          <b>invite code: </b>
+          {orgData.invitecode}
+        </div> : ""}
+        
 
         
         <div className="addlogout flex justify-center items-center">

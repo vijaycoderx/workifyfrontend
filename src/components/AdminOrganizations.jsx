@@ -57,11 +57,11 @@ const AdminOrganizations = () => {
 
 
         return (
-            <div key={item.id} className={`orgcon my-2 flex flex-row justify-between items-center px-2 items-start hover:bg-slate-400 rounded-[4px] ${item.id === orgSelector.id ? 'bg-slate-500 rounded-[4px]' : ''}`} onClick={() => assignedTasks(item)}>
+            <div key={item.id} className={`orgcon my-2 flex flex-row justify-start gap-x-[20px] items-center px-2 items-start hover:bg-slate-400 rounded-[4px] ${item.id === orgSelector.id ? 'bg-slate-500 rounded-[4px]' : ''}`} onClick={() => assignedTasks(item)}>
                 <div className="orgimgholder overflow-hidden box-border border-[black] border-[1px] bg-[white] rounded-[50%] w-[50px] h-[50px]">
                     <img src={item.image ? item.image : orgdefault} alt=""  className=' w-[100%] h-[100%]' />
                 </div>
-                <div className="orgtextholder flex flex-col justify-center items-center">
+                <div className="orgtextholder flex flex-col justify-center items-start ">
                     <div className="title font-semibold font-[sans-serif]">{item.name}</div>
                     <div className="desc font-[sans-serif]">{item.desc}</div>
                 </div>

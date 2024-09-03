@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
 import Admin from './pages/Admin';
+import ForgotPassword from './pages/ForgotPassword';
+import Home from './pages/Home';
 
 function App() {
   // const navigator = useNavigate();
@@ -15,9 +17,10 @@ function App() {
 
       <BrowserRouter>
         <Routes>
-          <Route path='/' element="home"></Route>
+          <Route path='/' element={<Home />}></Route>
           <Route path='/auth' element={<Auth />}></Route>
           <Route path='/admin' element={<Admin />}></Route>
+          <Route path='/reset' element={<ForgotPassword />}></Route>
         </Routes>
       </BrowserRouter>
 

@@ -47,7 +47,7 @@ const AdminAddTask = () => {
     
     let membersList = orgData.members.map((item) => {
         return (
-            <option>{item.name}</option>
+            <option title={item.email}>{item.name}</option>
             
         )
     })
@@ -55,7 +55,7 @@ const AdminAddTask = () => {
 
     return (
         <div className='con fixed w-full h-[100vh] flex justify-center items-center '>
-            <div className="add-card h-[300px] w-2/5 bg-[white] rounded border-box p-1 flex flex-col justify-end items-center border-[2px] border-[black]">
+            <div className="add-card h-[300px] w-2/5 bg-[white] rounded box-border p-1 flex flex-col justify-end items-center border-[2px] border-[black]">
                 <div className="add-card-holder flex flex-col justify-start items-center w-full   px-5 flex-grow">
                     <div className="img-title-desc flex justify-start items-center h-1/2  w-full  ">
                         {/* <div className="img-holder flex flex-col justify-start items-center">
@@ -78,24 +78,24 @@ const AdminAddTask = () => {
                         </div>
                     </div>
 
-                    <div className="start-end-assign flex justify-between items-center w-full my-5 px-5 ">
-                        <div className="start-date mx-1 border-[2px] rounded border-[blueviolet]">
+                    <div className="start-end-assign flex justify-between items-center w-full my-5 px-5  box-border gap-x-[5px]">
+                        <div className="start-date  border-[2px] rounded border-[blueviolet] w-1/3">
                             <label htmlFor="start-date" className='mx-1 font-sans-serif font-bold text-[blueviolet]'>start</label>
-                            <input type="date" name="" id="start-date" className='outline-none' onChange={(e) => {
+                            <input type="date" name="" id="start-date" className='outline-none w-full' onChange={(e) => {
                                 setformData({...formData, start: e.target.value})
                             }}/>
                             
                         </div>
-                        <div className="end-data mx-1 border-[2px] rounded border-[blueviolet]">
+                        <div className="end-data  border-[2px] rounded border-[blueviolet] w-1/3">
                             <label htmlFor="end-date" className='mx-1 font-sans-serif font-bold text-[blueviolet]'>end</label>
-                            <input type="date" name="" id="end-date" className='mx-1 outline-none' onChange={(e) => {
+                            <input type="date" name="" id="end-date" className=' outline-none w-full' onChange={(e) => {
                                 setformData({...formData, end: e.target.value})
                             }}/>
                         </div>
 
-                        <div className="assign mx-1 border-[2px] rounded border-[blueviolet]">
+                        <div className="assign  border-[2px] rounded border-[blueviolet] w-1/3">
                             <label htmlFor="assign-mem" className='mx-1 font-sans-serif font-bold text-[blueviolet]'>Assign</label>
-                            <select name="" id="assign-mem" className='outline-none' onChange={(e) => {
+                            <select name="" id="assign-mem" className='outline-none w-full' onChange={(e) => {
                                 setformData({...formData, assignedto: e.target.value})
                             }}>
                                 {/* <option value="hey">mem1</option>

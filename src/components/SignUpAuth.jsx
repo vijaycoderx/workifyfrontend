@@ -20,7 +20,7 @@ const SignUpAuth = ({ authProps }) => {
 
     //hash generator
     const hashGenerator = async (password, salt) => {
-        let passHashed = await bcrypt.hash(password, salt)
+        let passHashed = await bcrypt.hash(password, salt);
         return passHashed;
     }
 
@@ -85,13 +85,13 @@ const SignUpAuth = ({ authProps }) => {
             const userDataForDB = {
                 email: formData.email,
                 username: formData.username ? formData.username : undefined,
-                password: inp_password_hash,
+                password: formData.confirmPassword,
                 accountType: "email",
         
             }
 
             try {
-                const res = await axios.post("http://localhost:8000/auth/email", userDataForDB);
+                const res = await axios.post("http://localhost:8000/auth/email/signup", userDataForDB);
                 if (res.status === 200) {
                     console.log(res.data);
                     localStorage.setItem("userJWTToken", res.data.userJWTToken);
@@ -116,7 +116,7 @@ const SignUpAuth = ({ authProps }) => {
 
     const googleGetURL = async () => {
         try {
-            const res = await axios.post('http://localhost:8000/auth/google');
+            const res = await axios.post('http://localhost:8000/auth/google/signup');
             // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
             window.location.href = await res.data.generatedUrl;
         } catch (error) {
@@ -127,7 +127,7 @@ const SignUpAuth = ({ authProps }) => {
     const githubGetURL = async () => {
 
         try {
-            const res = await axios.post('http://localhost:8000/auth/github');
+            const res = await axios.post('http://localhost:8000/auth/github/signup');
             // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
             window.location.href = await res.data.generatedUrl;
         } catch (error) {
