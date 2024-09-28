@@ -17,7 +17,7 @@ const AdminOrganizations = () => {
     useEffect(() => {
         console.log(userData)
         const orgListmng = async () => {
-            const getOrgList = await axios.post("http://localhost:8000/user/orglist", {
+            const getOrgList = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/user/orglist`, {
                 email: userData.email,
             })
             console.log("getorg list", getOrgList)

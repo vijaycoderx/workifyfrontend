@@ -26,7 +26,7 @@ const AdminAddTask = () => {
             console.log(orgData)
             console.log(formData)
             if (formData.title != undefined && formData.desc != undefined && assignedUserEmail != undefined && formData.start != undefined && formData.end != undefined) {
-                const addTaskRes = await axios.post("http://localhost:8000/org/addtask", {
+                const addTaskRes = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/org/addtask`, {
                     orgId: orgData.id,
                     task: { title: formData.title, desc: formData.desc, assignedto: assignedUserEmail, start: formData.start, end: formData.end, status: "pending"}
                     

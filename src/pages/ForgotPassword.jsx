@@ -15,7 +15,7 @@ const ForgotPassword = () => {
         console.log("ok pressed");
 
         try {
-            const reserpass = await axios.post("http://localhost:8000/reset", {"email": email});
+            const reserpass = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/reset`, {"email": email});
             console.log("response", reserpass)
         }
         catch (error) {
@@ -25,7 +25,7 @@ const ForgotPassword = () => {
 
     const cancelbtn = (e) => {
         console.log("cancel clicked");
-        window.location.href = "http://localhost:3000/auth"
+        window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/auth`
     }
 
 
@@ -42,7 +42,7 @@ const ForgotPassword = () => {
             console.log("pass", passHash,pass["new password"])
 
             const tokenData = jwtDecode(resetToken);
-            const updatepass = await axios.post("http://localhost:8000/user/updatepassword", {
+            const updatepass = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/user/updatepassword`, {
                 password: passHash,
                 email: tokenData.user,
             })
@@ -60,7 +60,7 @@ const ForgotPassword = () => {
                 token: resetToken
             }
             const tokenvalidation = async () => {
-                const validres = await axios.post("http://localhost:8000/verifyresettoken", userResetData)
+                const validres = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/verifyresettoken`, userResetData)
                 console.log("res", validres, validres.data.status)
                 
                 if (validres.data.status) {

@@ -37,7 +37,7 @@ const AdminAddOrg = () => {
             //     admin: userData.email,
             //     orgImage: formDataState.orgImage
             // })
-            const addOrgResponse = await axios.post("http://localhost:8000/org/create", formData, {
+            const addOrgResponse = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/org/create`, formData, {
                 headers: {
                     "Content-Type": "multipart/form-data",
                 },

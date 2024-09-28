@@ -1,5 +1,10 @@
 import axios from 'axios';
 import React, { useEffect } from 'react';
+// import dotenv from "dotenv"
+
+// dotenv.config()
+
+// console.log("dotenv", process.env.REACT_APP_BACKEND_ORIGIN)
 
 import AdminHeader from '../components/AdminHeader';
 import AdminOrganizations from '../components/AdminOrganizations';
@@ -30,16 +35,17 @@ const Admin = () => {
   useEffect(() => {
     const jwtVerifyFun = async () => {
       if (localStorage.getItem("userJWTToken")) {
-        console.log("user present")
-
-        const res = await axios.post("http://localhost:8000/isSignedin", { userJWTToken: localStorage.getItem("userJWTToken") });
+        // console.log("user present", process.env.BACKEND_ORIGIN)
+        console.log("origin", process.env.REACT_APP_BACKEND_ORIGIN)
+        // ${process.env.REACT_APP_BACKEND_ORIGIN}
+        const res = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/isSignedin`, { userJWTToken: localStorage.getItem("userJWTToken") });
         
         console.log("message", res.data.message);
         console.log(res.data);
         if (res.data.message) {
           console.log("jwt expired or invalid")
           localStorage.removeItem("userJWTToken");
-          window.location.href = "http://localhost:3000/auth";
+          window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/auth`;
         } else {
           // console.log(res.data)
           console.log("user verified");
@@ -50,7 +56,7 @@ const Admin = () => {
         // console.log("token status" + tokenStatus)
       } else {
         console.log("user not present")
-        window.location.href = "http://localhost:3000/auth";
+        window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/auth`;
       }
     }
     jwtVerifyFun();

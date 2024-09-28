@@ -10,7 +10,7 @@ const AdminJoinOrg = () => {
     const joinOrgOk = async () => {
         try {
             console.log("user email from store", userData)
-            const addOrgResponse = await axios.post("http://localhost:8000/org/join", {
+            const addOrgResponse = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/org/join`, {
                 name: userData.name ? userData.name : userData.username,
                 invitecode: formData.invitecode,
                 email: userData.email,

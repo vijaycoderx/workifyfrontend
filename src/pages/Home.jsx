@@ -8,16 +8,22 @@ import authorize from "../images/authorize.png";
 import tasks from "../images/tasks.png";
 import easy from "../images/easy.png";
 import security from "../images/secure.png";
+import mobileaccess from "../images/mobile.png";
+import heart from "../images/hearts.png";
 // import bglogo from "../images/task-home.svg";
 // import todo from "../images/todo.png";
 // bg-[#451aba]
 const Home = () => {
     
+    const getStarted = (e) => {
+        window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/auth`
+    }
     return (
         <>
-            <div className="homr-root w-full h-auto box-border   flex flex-col justify-start items-center overflow-y-scroll  bg-[white]" >
+
+            <div className="homr-root w-full  box-border   flex flex-col justify-start items-center overflow-y-scroll " >
                
-                <div className="align-con  w-[90%]   box-border   overflow-wrap" >
+                <div className="align-con  w-[90%]   box-border " >
 
                     <div className=" navigation-bar flex items-center justify-between h-[60px] box-border p-[5px] w-full  gap-x-[10px] ">
 
@@ -31,14 +37,14 @@ const Home = () => {
                             </div>
 
                             <div className="menuitems flex justify-center items-center gap-[10px] ml-[50px]">
-                                <div className="ser  inline font-[Poppins,_sans-serif] hover:cursor-pointer">
+                                <div className="ser  inline px-[5px] font-[Poppins,_sans-serif] hover:cursor-pointer bg-[#8bde47] rounded-[25px] text-[1.2rem]">
                                     SERVICES
                                 </div>
-                                <div className="cont  inline font-[Poppins,_sans-serif] hover:cursor-pointer">
+                                <div className="cont  inline font-[Poppins,_sans-serif] hover:cursor-pointer bg-[#8bde47] rounded-[25px] text-[1.2rem] px-[5px]">
                                     SUPPORT
                                 </div>
 
-                                <div className="cont  inline font-[Poppins,_sans-serif] hover:cursor-pointer">
+                                <div className="cont  inline font-[Poppins,_sans-serif] hover:cursor-pointer bg-[#8bde47] rounded-[25px] text-[1.2rem] px-[5px]">
                                     BLOG
                                 </div>
                             </div>
@@ -46,15 +52,14 @@ const Home = () => {
                         
 
                         <div className="get-start-con font-[Poppins,_sans-serif]">
-                            <button className="font-[Poppins,_sans-serif]">GET STARTED</button>
+                            <button className="font-[Poppins,_sans-serif] box-border border-[black] rounded-[25px] text-[1.2rem] px-[3px] border-[2px] hover:bg-[#282A35] hover:text-[white]" onClick={getStarted}>GET STARTED</button>
                         </div>
                         
                     </div>
 
                     <div className="split flex justify-center items-center w-full h-auto p-[2px] box-border ">
                         <div className="qoute w-full flex justify-center items-center  box-border h-full">
-                            {/* <div className="font-['Matemasie',_sans-serif] font-normal not-italic text-[32px]">Organize your tasks, optimize your time, and achieve more with less effort.</div> */}
-                            {/* here padding centers the text */}
+                            
                             <div className="font-['Matemasie',_sans-serif] font-normal not-italic text-[64px] w-[80%] h-full box-border p-[50px] keep-all">
                                 
                             Organize your <span className="text-[blueviolet]">tasks</span>, <span className="text-[orangered]">optimize</span> your time, and unlock the power to <span className="text-[lightgreen]">achieve</span> more with <span className="text-[orange]">less</span> effort.
@@ -129,10 +134,10 @@ const Home = () => {
                     
                 </div>
                 {/*  bg-[#451aba]*/}
-                <div className="moreinfo flex flex-col justify-start items-center box-border  h-auto w-full">
+                <div className="moreinfo flex flex-col justify-start items-center box-border  h-auto w-full ">
                     <div className="tabholder flex justify-between items-center  w-[90%] h-auto bg-[#451aba] rounded-[10px] my-[5px] ">
-                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center">
-                            <img src={tasks} alt="tasks" width="100%" height="100%"/>
+                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center box-border p-[20px]">
+                            <img src={tasks} alt="tasks" className="w-full h-full object-contain"/>
                         </div>
                         <div className="dataholder flex flex-col justify-start items-center w-[70%]">
                             <div className="title font-['Rowdies',_sans-serif] text-[3rem] text-[white]">
@@ -155,14 +160,14 @@ const Home = () => {
                                 Simple setup and intuitive design mean your team can jump in and start managing tasks without missing a beat.
                             </div>
                         </div>
-                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center">
-                            <img src={tasks} alt="tasks" width="100%" height="100%"/>
+                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center box-border p-[20px]">
+                            <img src={easy} alt="tasks" className="w-full h-full object-contain"/>
                         </div>
                     </div>
 
                     <div className="tabholder flex justify-between items-center  w-[90%] h-auto bg-[#451aba] rounded-[10px] my-[5px]">
-                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center">
-                            <img src={tasks} alt="tasks" width="100%" height="100%"/>
+                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center box-border p-[20px] ">
+                            <img src={security} alt="tasks" className="w-full h-full object-contain"/>
                         </div>
                         <div className="dataholder flex flex-col justify-start items-center w-[70%]">
                             <div className="title font-['Rowdies',_sans-serif] text-[3rem] text-[white]">
@@ -184,8 +189,8 @@ const Home = () => {
                                 Access and update your tasks anytime, anywhere with our mobile-friendly platform.
                             </div>
                         </div>
-                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center">
-                            <img src={tasks} alt="tasks" width="100%" height="100%"/>
+                        <div className="imgholder w-[30%] h-[350px] flex justify-center items-center box-border p-[20px]">
+                            <img src={mobileaccess} alt="tasks" className="w-full h-full object-contain"/>
                         </div>
                     </div>
 
@@ -193,8 +198,9 @@ const Home = () => {
                 </div>
 
                 
-                <div className=" footer bg-[gray] w-full bg-[pink]">
-                    x
+                <div className=" footer w-full text-[1.2rem] font-bold">
+                    <p className="h-[50px] flex justify-center items-center">MADE WITH LOVE <img src={heart} alt="" className="w-[30px] h-[30px] mx-2" /></p>
+                    
                 </div>
             </div>
         </>

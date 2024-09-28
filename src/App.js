@@ -12,6 +12,7 @@ import Home from './pages/Home';
 
 function App() {
   // const navigator = useNavigate();
+  console.log("dotenv", process.env.REACT_APP_BACKEND_ORIGIN)
   return (
     <div className="App flex flex-col justify-center items-center h-screen">
 

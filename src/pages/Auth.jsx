@@ -2,7 +2,10 @@ import React, {useState} from "react";
 import SignInAuth from "../components/SignInAuth";
 import SignUpAuth from "../components/SignUpAuth";
 import axios from "axios";
+// import dotenv from "dotenv"
+// dotenv.config()
 
+console.log("dotenv", process.env.REACT_APP_BACKEND_ORIGIN)
 const Auth = () => {
     const [authType, setAuthType] = useState("signin");
     const authJson = {

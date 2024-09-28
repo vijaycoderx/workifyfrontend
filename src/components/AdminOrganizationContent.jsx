@@ -35,7 +35,7 @@ const AdminOrganizationContent = () => {
   
   const taskComplete = async (taskid) => {
     try {
-      const updateTaskStatusRes = await axios.post("http://localhost:8000/org/updatetask", {
+      const updateTaskStatusRes = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/org/updatetask`, {
         orgid: orgData.id,
         taskid: taskid,
         status: "completed",
@@ -50,7 +50,7 @@ const AdminOrganizationContent = () => {
   const taskDelete = async (taskid) => {
     console.log("task deleted");
     try {
-      const deleteTaskStatusRes = await axios.post("http://localhost:8000/org/deletetask", {
+      const deleteTaskStatusRes = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/org/deletetask`, {
         orgid: orgData.id,
         taskid: taskid,
       })

@@ -91,11 +91,11 @@ const SignUpAuth = ({ authProps }) => {
             }
 
             try {
-                const res = await axios.post("http://localhost:8000/auth/email/signup", userDataForDB);
+                const res = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/email/signup`, userDataForDB);
                 if (res.status === 200) {
                     console.log(res.data);
                     localStorage.setItem("userJWTToken", res.data.userJWTToken);
-                    window.location.href = "http://localhost:3000/admin";
+                    window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/admin`;
                 } else {
                     console.log(res);
                 }
@@ -116,7 +116,7 @@ const SignUpAuth = ({ authProps }) => {
 
     const googleGetURL = async () => {
         try {
-            const res = await axios.post('http://localhost:8000/auth/google/signup');
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/google/signup`);
             // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
             window.location.href = await res.data.generatedUrl;
         } catch (error) {
@@ -127,7 +127,7 @@ const SignUpAuth = ({ authProps }) => {
     const githubGetURL = async () => {
 
         try {
-            const res = await axios.post('http://localhost:8000/auth/github/signup');
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/github/signup`);
             // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
             window.location.href = await res.data.generatedUrl;
         } catch (error) {

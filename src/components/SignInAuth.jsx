@@ -7,11 +7,11 @@ const SignInAuth = ({ authProps }) => {
     useEffect(() => {
         if (localStorage.getItem("userJWTToken")) {
             const validateUser = (async () => {
-                const jwtTokenValidRes = await axios.post("http://localhost:8000/isSignedin", {
+                const jwtTokenValidRes = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/isSignedin`, {
                     userJWTToken: localStorage.getItem("userJWTToken")
                 })
                 if (jwtTokenValidRes.data.message == undefined) {
-                    window.location.href = "http://localhost:3000/admin"
+                    window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/admin`
                 } else {
                     console.log("err", jwtTokenValidRes.data.message)
                 }
@@ -27,7 +27,7 @@ const SignInAuth = ({ authProps }) => {
 
     const googleGetURL = async () => {
         try {
-            const res = await axios.post('http://localhost:8000/auth/google/signup');
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/google/signup`);
             // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
             window.location.href = await res.data.generatedUrl;
         } catch (error) {
@@ -39,7 +39,7 @@ const SignInAuth = ({ authProps }) => {
     const githubGetURL = async () => {
 
         try {
-            const res = await axios.post('http://localhost:8000/auth/github/signup');
+            const res = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/github/signup`);
             // console.log(JSON.stringify(res) + " bbb " + res.data.generatedUrl);
             window.location.href = await res.data.generatedUrl;
         } catch (error) {
@@ -67,12 +67,12 @@ const SignInAuth = ({ authProps }) => {
                 email: formData.emailUsername,
                 password: formData.password,
             }
-            const signinEmailRes =  await axios.post("http://localhost:8000/auth/email/signin", userData)
+            const signinEmailRes =  await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/email/signin`, userData)
             if (signinEmailRes.status == 200) {
                 console.log("looooooo",signinEmailRes.data);
                 localStorage.setItem("userJWTToken", signinEmailRes.data.userJWTToken);
                 if (signinEmailRes.data.status) {
-                    window.location.href = "http://localhost:3000/admin";
+                    window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/admin`;
                 }
                 
             }
@@ -86,13 +86,13 @@ const SignInAuth = ({ authProps }) => {
                 username: formData.emailUsername,
                 password: formData.password,
             }
-            const signinEmailRes = await axios.post("http://localhost:8000/auth/email/signin", userData)
+            const signinEmailRes = await axios.post(`${process.env.REACT_APP_BACKEND_ORIGIN}/auth/email/signin`, userData)
             console.log(signinEmailRes)
             if (signinEmailRes.status == 200) {
                 console.log("looooooo",signinEmailRes.data);
                 localStorage.setItem("userJWTToken", signinEmailRes.data.userJWTToken);
                 if (signinEmailRes.data.status) {
-                    window.location.href = "http://localhost:3000/admin";
+                    window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/admin`;
                 }
                 
             }
@@ -110,7 +110,7 @@ const SignInAuth = ({ authProps }) => {
     // }
 
     const forgotpass = (e) => {
-        window.location.href = "http://localhost:3000/reset";
+        window.location.href = `${process.env.REACT_APP_FRONTEND_ORIGIN}/reset`;
     }
     
     return (
